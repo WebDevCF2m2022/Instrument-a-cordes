@@ -30,6 +30,13 @@
                 </div>
               </form>
     </div>
+    <footer>
+        <?php
+        require_once "../publicView/src/footer.php"
+        ?>
+    </footer>
+
+    <script src="js/script.js"></script>
        
 </body>
 </html>

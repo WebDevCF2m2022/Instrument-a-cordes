@@ -4,7 +4,7 @@ require_once "../config.php";
 require_once "../modele/modeleAdmin.php";
 require_once "../modele/modeleCategory.php";
 require_once "../modele/modeleInstrument.php";
-require_once "../vendor/autoload.php";
+#require_once "../vendor/autoload.php";
 
 try {
     $dbConnect = new PDO (DB_TYPE.':host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME.';charset='.DB_CHARSET,
