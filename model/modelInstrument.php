@@ -385,6 +385,34 @@ function deleteInstrument(pdo $dbConnect, int $idInstrumentDelete){
 
 
 
+
+function search (pdo $dbConnect, string $recherche): array {
+    try {
+    
+        $all = $dbconnect->query('SELECT * FROM instrument WHERE id AND title AND description AND history AND technics AND visible AND intro AND date LIKE "%'.$recherche.'%" ORDER BY id DESC '); 
+        $all2 = $dbconnect->query('SELECT * FROM category WHERE id AND namecateory LIKE "%'.$recherche.'%" ORDER BY id DESC '); 
+        $all3= $dbconnect->query('SELECT * FROM musicien WHERE id AND firstname AND lastname AND biography AND bornDate AND deathDate AND id_instrument AND date LIKE "%'.$recherche.'%" ORDER BY id DESC '); 
+        $all4 = $dbconnect->query('SELECT * FROM picture WHERE id AND name AND imageMini AND imageMiddle AND imageFull AND description AND date AND dateFetch AND orientation AND id_instrument LIKE "%'.$recherche.'%" ORDER BY id DESC '); 
+        $all5 = $dbconnect->query('SELECT * FROM sound WHERE id AND name AND description AND audio AND date AND id_instrument  LIKE "%'.$recherche.'%" ORDER BY id DESC '); 
+        $assetInstru = $all->fetchAll(PDO::FETCH_ASSOC);
+        $assetInstru2 = $all2->fetchAll(PDO::FETCH_ASSOC);
+        $assetInstru3 = $all3->fetchAll(PDO::FETCH_ASSOC);
+        $assetInstru4 = $all4->fetchAll(PDO::FETCH_ASSOC);
+        $assetInstru = $assetInstru + $assetInstru2;
+        $assetInstru = $assetInstru + $assetInstru3;
+        $assetInstru = $assetInstru + $assetInstru4;
+        unset($assetInstru2);
+        unset($assetInstru3);
+        unset($assetInstru4);
+        return $assetInstru;
+        var_dump($assetInstru);
+    } catch (Exception $e) {
+       die("une érreur a été trouve : ".$e->getMessage()); 
+    }
+}
+
+
+
 /*function fetchAllInstrument (pdo $dbConnect){
     
 

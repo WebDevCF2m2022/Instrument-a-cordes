@@ -66,8 +66,8 @@
 
         </tr>
         <?php
-        if (isset($instruments)) :
-            foreach ($instruments as $item) :
+        if (isset($searchs)) :
+            foreach ($searchs as $item) :
 
         ?>
                 <tr>
