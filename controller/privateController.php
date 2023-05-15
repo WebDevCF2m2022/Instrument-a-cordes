@@ -201,7 +201,24 @@ if(isset($_POST['addInstrument'])){
     $e = throw new Exception ('Un problème est survenu lors de la modification , veuillez recommencer !');
 }
 
-   
+
+// requette query pour selecte toute le table du recherche 
+if(isset($_GET['s'])AND !empty($_GET['s'])){
+    $recherche = htmlspecialchars($_GET['s']); 
+    $recherche =trim($recherche); 
+    $recherche = strip_tags($recherche); 
+    $search = search( $dbConnect, $recherche);
+    foreach($search as $item){
+        /*if (is_array($instruments[])){
+            $instrument= explode($instruments,'||');
+        }*/
+        $searchs[] = new modelInstrument($item);
+    }
+    include_once "../privateView/search.php";
+    
+
+}
+  
 
 
   
